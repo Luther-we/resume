@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+
+import HeaderBar from './componants/headerBar/HeaderBar'
+import BlockUnit from './componants/block/BlockUnit'
+import AppBar from './componants/appBar/AppBar'
+import {Route, Switch} from 'react-router-dom'
+import error404 from './container/error/404'
+import AddContent from './layout/AddContent/AddContent'
+import Workshop from './layout/workout/Workshop'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header >
+          <HeaderBar />
         </header>
+        <Switch>
+          <Route exact path='/' component={BlockUnit}/>
+          <Route path='/add' component={AddContent}/>
+          <Route path='/workshop' component={Workshop}/>
+
+        </Switch>
+        <AppBar/>
       </div>
     );
   }
