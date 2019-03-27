@@ -1,12 +1,9 @@
 import React, {PureComponent} from 'react'
 import Paper from '@material-ui/core/Paper/Paper'
-import {Button} from '@material-ui/core'
 import {Link} from 'react-router-dom'
 import Tabs from '@material-ui/core/Tabs/Tabs'
 import Tab from '@material-ui/core/Tab/Tab'
-import AddTweet from '../AddContent/AddTweet'
 import {Route, Switch} from 'react-router'
-import BlockUnit from '../../componants/block/BlockUnit'
 import Tweet from './TweetForm'
 
 const element = ['Article', 'Tweet', 'Image', 'Mixte']
@@ -82,14 +79,3 @@ class Workshop extends PureComponent {
 }
 
 export default Workshop;
-
-
-
-
-
-
-const Article = (props) => (
-  <div>
-    je suis Article
-  </div>
-)

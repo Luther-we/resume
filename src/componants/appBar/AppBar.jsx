@@ -9,7 +9,6 @@ import { Settings as SettingsIcon } from '@material-ui/icons'
 import MenuUser from '../menuUser/MenuUser'
 import MenuSettings from '../menuSettings/MenuSettings'
 import MenuSubject from '../menuSubject/MenuSubject'
-import {Link} from 'react-router-dom'
 
 const style = theme => ({
   appBar: {
@@ -49,9 +48,6 @@ const style = theme => ({
     justifyContent: 'flex-end'
   },
 })
-
-const MyLink = props => <Link to="/workshop" {...props} />
-
 
 class AppBar extends PureComponent {
   constructor(props) {

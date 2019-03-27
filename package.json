@@ -42,8 +42,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test",
+      "pre-commit": "echo patate",
       "...": "..."
     }
   },
@@ -62,4 +61,7 @@
     "pretty-quick": "^1.10.0",
     "react-app-rewired": "^2.1.1"
   }
+},
+{
+
 }

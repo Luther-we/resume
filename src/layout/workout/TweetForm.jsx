@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField/TextField'
 import {withStyles, Button, Switch} from '@material-ui/core'
 import BlockTweet from './BlockTweet'
 import {goFetchApi} from '../../fetch/fetch'
-import others from '../../modules/intl/fr/others'
 import Select from '@material-ui/core/Select/Select'
 
 /**

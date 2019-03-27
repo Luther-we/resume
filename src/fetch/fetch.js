@@ -3,7 +3,7 @@ import axios from 'axios'
 const goApi = (url, object) => {
   axios.post(url, object)
     .then((dataIn) => {
-      const { status, statusText, data } = dataIn
+      const { status, data } = dataIn
 
       if (status === 200) {
         console.log('data', data)
