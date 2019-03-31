@@ -32,9 +32,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import { theme } from './modules/theme/overrideTheme'
 import Block from './componants/block/BlockMixt'
 import AddSomething from './pages/addSomething/AddSomething'
-import Workshop from './layout/workout/Workshop'
+import Workshoptest from './layout/workout/Workshoptest'
 import error404 from './container/error/404'
-console.log('toto', AddSomething)
 
 addLocaleData([...locale_fr, ...locale_en])
 
@@ -48,7 +47,7 @@ const messages = {
 }
 const language = navigator.language.split(/[-_]/)[0]
 
-console.log('environnement', window)
+// console.log('environnement', window)
 
 const target = document.getElementById('root')
 
@@ -62,7 +61,7 @@ class Fake extends React.Component {
   }
 }
 
-console.log(Fake)
+
 
 render(
   <Provider store={store}>
@@ -71,9 +70,10 @@ render(
           <Router history={history}>
               <Switch>
                 <Route path='/' component={App}/>
+                {/*<Route exact path='/lazy' component={Lazy}/>*/}
                 <Route exact path='/container' component={Container}/>
                 <Route path='/test/tester/:id' component={Tester}/>
-                <Route exact path='/lazy' component={Lazy}/>
+
                 <Route exact path='/all' component={BlockUnit}/>
                 <Route component={error404}/>
 

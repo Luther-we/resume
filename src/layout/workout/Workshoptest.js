@@ -5,10 +5,15 @@ import Tabs from '@material-ui/core/Tabs/Tabs'
 import Tab from '@material-ui/core/Tab/Tab'
 import {Route, Switch} from 'react-router'
 import Tweet from './TweetForm'
+import TweetForm from './TweetForm'
 
+const InvokeComponent = (component) => {
+  return component
+}
 const element = ['Article', 'Tweet', 'Image', 'Mixte']
 
-class Workshop extends PureComponent {
+class Workshoptest extends PureComponent {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -23,11 +28,16 @@ class Workshop extends PureComponent {
     console.log(this.state)
   }
 
+
+
   getWidthTab = () => {
     return 100/element.length
   }
 
   render() {
+    console.log(this.props)
+    const currentPath = this.props.match.path
+
     return (
       <><div>
           <p>Hey, je suis Workshop</p>
@@ -57,7 +67,7 @@ class Workshop extends PureComponent {
                 style={{
                   width: `${this.getWidthTab()}%`
                 }}
-                to={`/workshop/${item}`}
+                to={`/workshop/test/${item}`}
                 component={Link}
                 key={index}
                 label={item}
@@ -65,10 +75,10 @@ class Workshop extends PureComponent {
               />
               ))}
           </Tabs>
-
           <Switch>
+
             {element.map((item, index, tab) => (
-              <Route key={index} path={`/workshop/${item}`} component={Tweet}/>
+              <Route key={index} path={`/workshop/test/:id`} component={TweetForm}/>
             ))}
           </Switch>
         </Paper>
@@ -78,4 +88,4 @@ class Workshop extends PureComponent {
   }
 }
 
-export default Workshop;
+export default Workshoptest;

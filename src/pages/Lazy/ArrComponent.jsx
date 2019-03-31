@@ -8,6 +8,7 @@ class ArrComponent extends PureComponent {
       count: 0
     }
   }
+
   componentWillMount() {
     console.log('-- ARRCOMPONENT -- Component Will Mount ')
   }
@@ -27,7 +28,7 @@ class ArrComponent extends PureComponent {
 
     this.counter()
 
-    const arr = Array.apply(null, Array(10000)).map((a, i) => <li key={i}>{a} {i}</li>)
+    const arr = Array.apply(null, Array(10)).map((a, i) => <li key={i}>{a} {i}</li>)
     return (
       <>
         <h1>{this.state.count}</h1>

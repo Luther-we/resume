@@ -19,7 +19,7 @@ class TweetForm extends Component {
   constructor() {
     super()
     this.state = {
-      displayTemplate: false
+      displayTemplate: true
     }
   }
 
@@ -39,10 +39,12 @@ class TweetForm extends Component {
 
   render() {
     const { title, content, category, publicationDate } = this.props
+    const currentParam = this.props.match.params.id
+    console.log(currentParam)
 
     return (
       <>
-        {
+        {currentParam === 'Tweet' && (
           this.state.displayTemplate ?
             (
               <form onSubmit={this.props.handleSubmit((values) => this._handleSubmit(values))}>
@@ -102,14 +104,17 @@ class TweetForm extends Component {
                 info
               />
             )
+        )
+
         }
-
-
         <Switch
           checked={this.state.displayTemplate}
           onChange={e => this._toggleTemplate(e)}
           value={this.state.displayTemplate}
         />
+
+
+
       </>
     )
   }

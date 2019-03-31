@@ -1,9 +1,12 @@
-import React, {PureComponent, Suspense, lazy} from 'react'
+import React, {PureComponent, lazy, Suspense} from 'react'
+// import {WithLoad} from './WithLoad'
+import ArrComponent from './ArrComponent'
 import Loader from './Loader'
-const ArrComponent = lazy (() => import ('./ArrComponent'))
+
+// const ArrComponent = lazy (() => import ('./ArrComponent'))
 
 
-class Lazy extends PureComponent {
+class Lazy extends PureComponent{
 
   componentWillMount() {
     console.log('-- LAZY -- Component Will Mount ')
@@ -17,8 +20,8 @@ class Lazy extends PureComponent {
     console.log('-- LAZY -- Component Render ')
     return (
       <>
-        <Suspense fallback={<Loader/>}>
-          <ArrComponent/>
+        <Suspense fallback={<Loader />}>
+          <ArrComponent />
         </Suspense>
       </>
     )
