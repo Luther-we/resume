@@ -1,9 +1,12 @@
 import React from 'react'
 
-const error404 = () => (
+const Error404 = (props) => {
+  console.log('No milk today', props.match)
+  return (
   <>
-    <h1>Non found</h1>
-    </>
-)
+    <h1>Non found: {props.match.params.id} //////</h1>
+  </>
+  )
+}
 
-export default error404
+export default Error404

@@ -1,51 +1,77 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
+import { Redirect } from 'react-router'
 
 import HeaderBar from './componants/headerBar/HeaderBar'
-import BlockUnit from './componants/block/BlockUnit'
 import AppBar from './componants/appBar/AppBar'
-import { Route, Switch } from 'react-router-dom'
-import AddContent from './layout/AddContent/AddContent'
-import Workshoptest from './layout/workout/Workshoptest'
-import HomeWorkshop from './layout/workout/HomeWorkshop'
+import Error404 from './container/error/404'
+import AllPage from './pages/allPage/AllPage'
+import Login from './pages/login/Login'
+import Logout from './pages/logout/Logout'
+import Article from './pages/article/Article'
+import AddContent from './pages/addContent/AddContent'
+import Workshop from './pages/workshop/Workshop'
+
 
 const routes = [
   {
-    to: '/workshop/test',
-    component: 'Workshoptest'
+    path: '/all/:mode',
+    component: AllPage,
   },
   {
-    to: '/workshop/test2',
-    component: 'Workshoptest'
+    path: '/login',
+    component: Login,
   },
   {
-    to: '/workshop/test3',
-    component: 'Workshoptest'
+    path: '/logout',
+    component: Logout,
+  },
+  {
+    path: '/article/:id',
+    component: Article,
+  },
+  {
+    path: '/add/:form',
+    component: AddContent,
+  },
+  {
+    path: '/workshop',
+    component: Workshop,
+  },
+  {
+    component: Error404,
   },
 ]
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header >
-          <HeaderBar />
-        </header>
+const RouteWithSubRoutes = route => (
+  <Route
+    path={route.path}
+    render={props => (
+      <route.component {...props}>
         <Switch>
-          {/*<Route exact path='/' component={BlockUnit}/>*/}
-          <Route path='/add' component={AddContent}/>
-          <Route exact path='/workshop' component={HomeWorkshop}/>
-          <Route path='/workshop/:id' component={Workshoptest}/>
-
-            {/*{routes.map((item, index) => (*/}
-              {/*<Route path={item.to} component={Workshoptest}/>*/}
-            {/*))}*/}
-
+          {route.routes && route.routes.map((subRoute, i) => (
+            <RouteWithSubRoutes key={i} {...subRoute} />
+          ))}
         </Switch>
-        <AppBar/>
-      </div>
-    );
-  }
-}
+      </route.component>
+    )}
+  />
+)
 
-export default App;
+const App = () => (
+  <div className="App">
+    <header>
+      <HeaderBar />
+    </header>
+    <Switch>
+      <Redirect exact from="/" to="/all" />
+      {routes.map((route, i) => (
+        <RouteWithSubRoutes key={i} {...route} />
+      ))}
+    </Switch>
+    <AppBar />
+  </div>
+)
+
+export default App

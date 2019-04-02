@@ -9,6 +9,7 @@ import { Settings as SettingsIcon } from '@material-ui/icons'
 import MenuUser from '../menuUser/MenuUser'
 import MenuSettings from '../menuSettings/MenuSettings'
 import MenuSubject from '../menuSubject/MenuSubject'
+import {Route} from 'react-router'
 
 const style = theme => ({
   appBar: {
@@ -49,6 +50,26 @@ const style = theme => ({
   },
 })
 
+const ButtonCustom = (props) => {
+  return (
+    <Route
+      path={props.to}
+      // exact={activeOnlyWhenExact}
+      children={({ match, ...otherProps }) => (
+        <Button className={match ? "active" : ""}
+          onClick={() => {
+            otherProps.history.push(props.to)
+            console.log('otherProps', otherProps)
+          }}
+        >
+          {match ? "> " : ""}
+          {props.children}
+        </Button>
+      )}
+    />
+  )
+}
+
 class AppBar extends PureComponent {
   constructor(props) {
     super(props)
@@ -60,9 +81,9 @@ class AppBar extends PureComponent {
     }
   }
 
-  _closeMenu = (key) => (this.setState({ [key] : false }))
+  _closeMenu = key => (this.setState({ [key] : false }))
 
-  _toggleMenu = (key) => ( this.setState(state => ({[key]: !state[key]})) )
+  _toggleMenu = key => ( this.setState(state => ({[key]: !state[key]})) )
 
   render() {
     const { classes } = this.props
@@ -76,7 +97,7 @@ class AppBar extends PureComponent {
                 onClick={() => this._toggleMenu('userMenu')}
                 className={classes.button}
               >
-                Toto
+                Luther W.
               </Button>
               {this.state.userMenu && (<MenuUser/>)}
             </div>
@@ -96,14 +117,14 @@ class AppBar extends PureComponent {
             open={this.state.settingsMenu}
             close={() => this._closeMenu('settingsMenu')}
           />
-            <Button
+            <ButtonCustom
               // onClick={() => this._toggleMenu('subjectMenu')}
               className={classes.button3}
-              href='/workshop'
+              to='/workshop'
               // component={MyLink}
             >
               #worshop
-            </Button>
+            </ButtonCustom>
             <MenuSubject
               open={this.state.subjectMenu}
               close={() => this._closeMenu('subjectMenu')}

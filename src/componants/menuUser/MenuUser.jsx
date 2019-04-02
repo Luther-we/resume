@@ -23,9 +23,12 @@ class MenuUser extends PureComponent{
     return (
       <Paper className={classes.container}>
         <MenuList>
-          <MenuItem><Link to='/add-something'>Add Article</Link></MenuItem>
-          <MenuItem>Modifier</MenuItem>
-          <MenuItem>Logout</MenuItem>
+          <MenuItem><Link to="/add">ajouter</Link></MenuItem>
+          <MenuItem><Link to="/all/edit">éditer</Link></MenuItem>
+          <MenuItem><Link to="/workshop">workshop</Link></MenuItem>
+          <MenuItem><Link to="/logout">logout</Link></MenuItem>
+          <MenuItem><Link to="/login">login</Link></MenuItem>
+          <MenuItem><Link to="/all">home</Link></MenuItem>
         </MenuList>
       </Paper>
     )
